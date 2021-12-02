@@ -45,6 +45,7 @@ Documentation = "https://fastapi.tiangolo.com/"
 [tool.flit.metadata.requires-extra]
 test = [
     "pytest >=6.2.4,<7.0.0",
+    "pytest-mock >=3.6,<3.7",
     "pytest-cov >=2.12.0,<4.0.0",
     "mypy ==0.910",
     "flake8 >=3.8.3,<4.0.0",
@@ -57,6 +58,7 @@ test = [
     "peewee >=3.13.3,<4.0.0",
     "databases[sqlite] >=0.3.2,<0.6.0",
     "orjson >=3.2.1,<4.0.0",
+    "python-jose[cryptography] >=3.1.0,<4.0.0",
     "ujson >=4.0.1,<5.0.0",
     "python-multipart >=0.0.5,<0.0.6",
     "flask >=1.1.2,<3.0.0",
@@ -90,6 +92,7 @@ all = [
     "pyyaml >=5.3.1,<6.0.0",
     "ujson >=4.0.1,<5.0.0",
     "orjson >=3.2.1,<4.0.0",
+    "python-jose[cryptography] >=3.1.0,<4.0.0",
     "email_validator >=1.1.1,<2.0.0",
     "uvicorn[standard] >=0.12.0,<0.16.0",
 ]
@@ -114,6 +117,10 @@ warn_return_any = true
 implicit_reexport = false
 strict_equality = true
 # --strict end
+
+[[tool.mypy.overrides]]
+module = "jose.*"
+ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = "fastapi.concurrency"
